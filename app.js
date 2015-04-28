@@ -7,6 +7,7 @@ module.exports = function (flights, db){
 	var express = require('express');
 	var MongoStore = require('connect-mongo')(express);
 	var passport = require('./auth');
+	var favicon = require('serve-favicon');
 	var routes = require('./routes')(flights);
 	var path = require('path');
 
@@ -16,7 +17,7 @@ module.exports = function (flights, db){
 	app.set('port', process.env.PORT || 3000);
 	app.set('views', __dirname + '/views');
 	app.set('view engine', 'ejs');
-	app.use(express.favicon());
+	app.use(express.favicon( __dirname + '/public/favicon.ico' ));
 	app.use(express.logger('dev'));
 	app.use(express.cookieParser());
 	app.use(express.session({
