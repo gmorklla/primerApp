@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel="stylesheet" href="estilos/estilo.css" />
+    <style type="text/css">
+      button {
+        font-size: 7pt;
+        color:#404040;
+        width: 80px;
+        height: 15px;
+        float: right;
+      }
+    </style>
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    <p>Welcome to <%= title %></p>
+    <ul>
+    	<% for(var flight in flights) { %>
+    		<% var vuelo = flights[flight].getInformation() %>
+    		<li><a href="/flight/<%= vuelo.number %>" data-flight-num="<%= vuelo.number %>"><span><%= 'Vuelo ' + vuelo.number + ': ' %></span> <%= vuelo.origin + ' - '+ vuelo.destination %></a><button data-flight-num="<%= vuelo.number %>">Llegada</button></li>
+    	<% } %>
+    </ul>
+    <% include partials/page/jsDefaults.ejs %>
+  </body>
+</html>

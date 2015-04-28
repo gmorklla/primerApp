@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel="stylesheet" href="estilos/estilo.css" />
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    <p>Welcome to <%= title %></p>
+    <p><%= 'Último vuelo visto: ' + lastNumber %></p>
+    <ul>
+    	<% for(var flight in arrivals) { %>
+          <% var hora = new Date(arrivals[flight].actualArrive) %>
+          <li> <%= 'Vuelo: ' + arrivals[flight].number + ' ' %> <%= 'Hora de llegada: ' + hora %></li>
+    	<% } %>
+    </ul>
+    <% include partials/page/jsDefaults.ejs %>
+  </body>
+</html>
